@@ -8,7 +8,7 @@
             to keeping websites and forms safe from malicious intent it is also being used to digitize text, annotate images,
             and build machine learning data sets.</p>
         <p>This tutorial will require Laravel 5 and a Google reCaptcha site key. Please make sure you meet all the
-            <a href="https://symfony.com/doc/current/reference/requirements.html">dependency requirements</a> to create a Laravel 5 project.</p>
+            <a href="https://laravel.com/docs/5.5/installation">dependency requirements</a> to create a Laravel 5 project.</p>
         <p>To being, open your terminal and navigate to the directory where you want to create your project. In my case, since I am
             using the JetBrains IDE PhpStorm, I am going to navigate to my project directory and create a new project with Laravel 5.
             It's important to note that you don't have to use PhpStorm. There are many other viable otpions to develop Symfony
