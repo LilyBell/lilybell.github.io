@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {{ controller_name }}!{% endblock %}
+
+{% block body %}
+<div id="grecaptcha">
+    <h3>I'm a Google reCaptcha!</h3>
+    <div class="g-recaptcha" data-sitekey="6LdNWk4UAAAAAEYU26mm1LU_5AiXVkcaxcntGl3G"></div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script src='https://www.google.com/recaptcha/api.js'></script>
+{% endblock %}
