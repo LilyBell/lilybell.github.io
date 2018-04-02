@@ -47,7 +47,7 @@ application wide dependencies.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title> \{% block title %\} Welcome! \{% endblock %\} </title>
+        <title> {% \block title %} Welcome! {% endblock %} </title>
         {% block stylesheets %} {% endblock %}
     </head>
     <body>
