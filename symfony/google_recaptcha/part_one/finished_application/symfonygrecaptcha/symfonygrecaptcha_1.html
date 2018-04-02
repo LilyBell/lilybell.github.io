@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Symfony | Google reCaptcha!</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+</head>
+    <body>
+    <style>
+        .comment-location {
+            color: #565656;
+        }
+
+        .pref-text {
+            font-family: 'Inconsolata', monospace;
+        }
+
+
+    </style>
+        <div class="container">
+            <div class="pref-text">
+                <a href="https://www.patreon.com/lilybell">Click here to support me!</a><br>
+                <h2>Google reCaptcha in Symfony 4</h2>
+                <p>For quite some time now Google reCaptcha has been the most advanced and easy to use reCaptcha option. In addition
+                    to keeping websites and forms safe from malicious intent it is also being used to digitize text, annotate images,
+                    and build machine learning data sets.</p>
+                <p>This tutorial will require Symfony 4 and a Google reCaptcha site key. Please make sure you meet all the
+                    <a href="https://symfony.com/doc/current/reference/requirements.html">dependency requirements</a> to create a Symfony 4 project.</p>
+                <p>To being, open your terminal and navigate to the directory where you want to create your project. In my case, since I am
+                    using the JetBrains IDE PhpStorm, I am going to navigate to my project directory and create a new project with Symfony 4.
+                    It's important to note that you don't have to use PhpStorm. There are many other viable otpions to develop Symfony
+                    projects including Atom, Brackets, Sublime, Eclipse and Netbeans. Tou can also use vim, nano or emacs if you prefer
+                    working from the command line.</p>
+            </div>
+            <code><strong>cd ~/phpstormprojects && composer create-project symfony/website-skeleton symfonygrecaptcha && cd symfonygrecaptcha</strong></code>
+            <div class="pref-text">
+                <p>Now that we are in our new project directory it's time to get down to business.</p>
+                <p>The first thing we want to do is get a site key for the Google reCaptcha API. <a href="https://www.google.com/recaptcha/intro/">Start here.</a></p>
+                <ol class="list-group">
+                    <li class="list-group-item">Click on the "Get reCaptcha" button at the top</li>
+                    <li class="list-group-item">Fill in the form and check reCAPTCHA V2</li>
+                    <li class="list-group-item">The form will expand and ask you to register the domains that are associated with this app.</li>
+                </ol>
+                <div class="alert alert-info">
+                    It is very important to list all domains that your application might access the API from,
+                    Failure to do this will result in the API refusing requests from your application.
+                    When developing locally enter 127.0.0.1 for your domain.
+                </div>
+                <p>Next, what we want to do is create a base view template. These are useful for setting up content blocks as well as maintaining application wide dependencies.</p>
+                <div class="card">
+                    <div class="card-body">
+                        <span class="comment-location">/templates/base.html.twig</span>
+                        <pre>&#60;!DOCTYPE html&#62;
+                        &#60;html&#62;
+                            &#60;head&#62;
+                                &#60;meta charset="UTF-8"&#62;
+                                &#60;title&#62;&#123;% block title %&#125;Welcome!&#123;% endblock %&#125;&#60;/title&#62;
+                                &#123;% block stylesheets %&#125;  &#123;% endblock %&#125;
+                            &#60;/head&#62;
+                            &#60;body&#62;
+                                &#123;% block body %&#125; &#123;% endblock %&#125;
+                                &#123;% block javascripts %&#125; &#123;% endblock %&#125;
+                            &#60;/body&#62;
+                            &#60;/html&#62;</pre>
+                    </div>
+                </div>
+                <p>Now that we have our base template, we can create the view that we are going to display our form and the Google reCaptcha in.</p>
+                <div class="card">
+                    <div class="card-body">
+                      <pre>/templates/index/index.html.twig
+                        &#123;% extends 'base.html.twig' %&#125;
+
+                        &#123;% block title %&#125;Hello &#123;&#123; controller_name &#125;&#125;!&#123;% endblock %&#125;
+
+                        &#123;% block body %&#125;
+                            &#60;div id="grecaptcha"&#62;
+                            &#60;h3&#62;I'm a Google reCaptcha!&#60;/h3&#62;
+                            &#60;/div&#62;
+                        &#123;% endblock %&#125;
+
+                        &#123;% block javascripts %&#125;
+                            &#60;script src='https://www.google.com/recaptcha/api.js'&#62;&#60;/script&#62;
+                        &#123;% endblock %&#125;</pre>
+                    </div>
+                </div>
+            </div>
+            <div class="pref-text">
+                <p>Now that you have the view where your reCaptcha challenge is going to live, go back to the reCaptcha page in your browser and locate
+                    the section that says <i>Client Side Integration</i>. You will find two lines of code there.</p>
+                <code><strong>&#60;script src='https://www.google.com/recaptcha/api.js'&#62;&#60;/script&#62;</strong></code><br>
+                <code><strong>&#60;div class="g-recaptcha" data-sitekey="YOUR SITE KEY HERE"&#62;&#60;/div&#62;</strong></code>
+                <p>Where you put the first line of code depends entirely on whether or not you are going to use multiple
+                    instances of the reCaptcha challenge or a single validation. E.G.: a user registration form</p>
+
+                <div class="card">
+                    <div class="card-title">Single Use</div>
+                    <div class="card-body">
+                            <pre><span class="comment-location">/templates/index/index.html.twig</span>
+                        &#123;% extends 'base.html.twig' %&#125;
+
+                        &#123;% block title %&#125;Hello &#123;&#123; controller_name &#125;&#125;!&#123;% endblock %&#125;
+
+                        &#123;% block body %&#125;
+                            &#60;div id="grecaptcha"&#62;
+                            &#60;h3&#62;I'm a Google reCaptcha!&#60;/h3&#62;
+                            &#60;div class="g-recaptcha" data-sitekey="6LdNWk4UAAAAAEYU26mm1LU_5AiXVkcaxcntGl3G"&#62;&#60;/div&#62;
+                            &#60;/div&#62;
+                        &#123;% endblock %&#125;
+
+                        &#123;% block javascripts %&#125;
+                            &#60;script src='https://www.google.com/recaptcha/api.js'&#62;&#60;/script&#62;
+                        &#123;% endblock %&#125;</pre>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Global Use</div>
+                    <div class="card-body">
+                        <span class="comment-location">/templates/base.html.twig</span>
+                        <pre>&#60;!DOCTYPE html&#62;
+                        &#60;html&#62;
+                            &#60;head&#62;
+                                &#60;meta charset="UTF-8"&#62;
+                                &#60;title&#62;&#123;% block title %&#125;Welcome!&#123;% endblock %&#125;&#60;/title&#62;
+                                &#123;% block stylesheets %&#125;  &#123;% endblock %&#125;
+                            &#60;/head&#62;
+                            &#60;body&#62;
+                                &#123;% block body %&#125; &#123;% endblock %&#125;
+                                &#123;% block javascripts %&#125;
+                                &#60;script src='https://www.google.com/recaptcha/api.js'&#62;&#60;/script&#62;
+                                &#123;% endblock %&#125;
+                            &#60;/body&#62;
+                            &#60;/html&#62;</pre>
+                    </div>
+                </div>
+                <div class="alert alert-warning">
+                    You should only use one of the above options. Using both runs the risk of the reCaptcha challenge not functioning.
+                </div>
+                <p>Success! The reCaptcha is now ready for use!</p>
+                <img src="https://i.imgur.com/TNiseSd.png">
+                <p>In the next tutorial we will cover how to use the reCaptcha challenge to validate a user registration form</p>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+        <script>
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
+        </script>
+    </body>
+</html>
