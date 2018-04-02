@@ -41,7 +41,7 @@ The first thing we want to do is get a site key for the Google reCaptcha API.
 Next, what we want to do is create a base view template. These are useful for setting up content blocks as well as maintaining
 application wide dependencies.
 
-```Twig
+```twig
 <!-- templates/base.html.twig -->
 <!DOCTYPE html>
 <html>
@@ -59,7 +59,7 @@ application wide dependencies.
 
 Now that we have our base template, we can create the view that we are going to display our form and the Google reCaptcha in. 
 
-```Twig
+```twig
 <!-- templates/index/index.html -->
 {% extends 'base.html.twig' %}
 
@@ -90,7 +90,7 @@ Where you put the first line of code depends entirely on whether or not you are 
 reCaptcha challenge or a single validation. E.G.: a user registration form
 
 > **Single Use**
-```Twig
+```twig
 <!-- templates/index.html.twig -->
 {% extends 'base.html.twig' %}
 
@@ -109,7 +109,7 @@ reCaptcha challenge or a single validation. E.G.: a user registration form
 ```
 
 > **Global Use**
-```Twig
+```twig
 <!-- templates/base.html.twig -->
 <!DOCTYPE html>
 <html>
