@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LilyBell's PHP Tutorials</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+</head>
+<body class="pref-text">
+<style>
+    .comment-location {
+        color: #565656;
+    }
+
+    .pref-text {
+        font-family: 'Inconsolata', monospace;
+    }
+
+    .container{
+        margin: 1% 10% 0 5%;
+        padding-bottom: 5%;
+    }
+    .smaller {
+        font-size: 0.9rem;
+    }
+</style>
+<div class="container">
+    <p>Welcome to my PHP Tutorials primer!</p>
+    <p>The goal here is to provide you with practical examples of the usage of Symfony and Laravel when developing projects.</p>
+    <h3>Tools</h3>
+    <div class="card">
+        <div class="card-body">
+            <div class="card-text">
+                Tutorial Tools
+            </div>
+            <p class="card-text">These are the tools you see used.</p>
+            <div class="smaller">
+                <a href="https://www.ubuntu.com/desktop/1710" class="card-link">Ubuntu 17.10</a>
+                <a href="https://www.jetbrains.com/phpstorm/" class="card-link">PhpStorm 2018.1</a>
+                <a href="http://www.php.net" class="card-link">PHP 7.1.15</a>
+                <a href="http://symfony.com/" class="card-link">Symfony 4.0.6</a>
+                <a href="https://laravel.com/" class="card-link">Laravel 5.6</a>
+                <a href="https://getcomposer.org/" class="card-link">Composer 1.6.3</a>
+                <a href="https://yarnpkg.com/" class="card-link">Yarn 1.5.1</a>
+                <a href="https://nodejs.org/" class="card-link">Node.js 8.11.1</a>
+                <a href="https://www.postgresql.org/" class="card-link">PostgreSQL 9.6.8</a>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <p class="alert alert-secondary">Wow! That's a lot of stuff but please keep in mind a lot of this is also optional and can be switched for tools you feel more comfortable with.
+    So let's cover that now.</p>
+    <p><span class="badge badge-info">Operating Systems</span></p>
+    <p>Despite what anyone will tell you the choice of operating system doesn't matter in the grand scheme of things as long as it meets the requirements to run
+    your tools. It is true that PHP is easier to develop with in Ubuntu or macOS but it can be done in Windows as well with a little extra work. My reccomendations for
+        an operating system are <a href="https://www.ubuntu.com/desktop/1710">Ubuntu 17.10</a>, <a href="https://www.apple.com/macos/high-sierra/">macOS High Sierra</a>, or <a href="https://www.microsoft.com/en-us/software-download/windows10ISO">Windows 10</a></p>
+    <p><span class="badge badge-info">IDEs</span></h3></p>
+    <p>There are a multitude of viable options for development. PhpStorm is definately my preference but you also have the choice of <a href="https://atom.io/">Atom</a>, <a href="http://brackets.io/">Brackets</a>, <a href="https://www.sublimetext.com/">Sublime</a>, <a href="https://www.eclipse.org/">Eclipse</a>, and <a href="https://netbeans.org/">Netbeans</a>. You can also
+        use <a href="https://www.vim.org/">vim</a>, <a href="https://www.nano-editor.org/">nano</a> or <a href="https://www.gnu.org/software/emacs">emacs</a> if you prefer working from the command line.</p>
+    <p><span class="badge badge-info">Node Packages</span></p>
+    <p>There are a ton of reasons to use Yarn over npm. It's faster, it caches everything you use so you can work on new projects offline and it's so much faster but you can still use npm if thats what you're comfortable with.</p>
+    <p><span class="badge badge-info">Database</span></p>
+    <p>There are a lot of options here. I work mostly with RDBMSs and Postgres is by and far my favorite but you can use anything you want. You can even use NoSQL if you want!. <a href="https://www.mysql.com/">MySQL</a>, <a href="https://firebirdsql.org/">Firebird</a>, <a href="https://db.apache.org/derby/">Derby</a>, <a href="http://cassandra.apache.org/">Cassandra</a>, <a href="https://www.mongodb.com/">MongoDB</a>, and so on.</p>
+    <h3>Assumed Knowledge</h3>
+    <p>These tutorials make certain assumptions about your level of skill with the tools that are being used. These are not
+    tutorials for novices.</p>
+    <div class="card">
+        <div class="card-body">
+            <div class="card-title">Assumptions</div>
+            <ul class="list-group-flush">
+                <li class="list-group-item">Intermediate understanding of your operating system and terminal usage &nbsp <span class="badge badge-info" data-toggle="tooltip" data-placement="top" title="You should understand how to install software, modify configurations and issue commands from the terminal.">More</span></li>
+                <li class="list-group-item">Basic understanding of your editor and it's configuration for PHP frameworks  &nbsp <span class="badge badge-info" data-toggle="tooltip" data-placement="top" title="You should be well versed in the installation of plugins, configuration and tools offered by your editor">More</span></li>
+                <li class="list-group-item">Intermediate understanding of object oriented PHP &nbsp <span class="badge badge-info" data-toggle="tooltip" data-placement="top" title="You should understand what classes, methods, constructors, inheritance, and DocBlocks at the very least.">More</span></li>
+                <li class="list-group-item">Intermediate understanding of PHP frameworks including their installation and configuration &nbsp <span class="badge badge-info" data-toggle="tooltip" data-placement="top" title="You should understand controller generation, templating, routing, environmental variables, basic configuration, and asset management.">More</span></li>
+                <li class="list-group-item">Basic understanding of package managers &nbsp <span class="badge badge-info" data-toggle="tooltip" data-placement="top" title="You should understand how to install a package manager and use it to create projects and install dependencies">More</span></li>
+                <li class="list-group-item">Intermediate understanding of data management  &nbsp <span class="badge badge-info" data-toggle="tooltip" data-placement="top" title="You should understand how to install data management software, initial setup, and basic structure creation.">More</span></li>
+            </ul>
+        </div>
+    </div>
+    <hr>
+    <h3>Tutorial Contents</h3>
+    <table class="table table-striped table-responsive-sm">
+        <thead>
+            <tr>
+                <th scope="col">Chapter</th>
+                <th scope="col">Subject</th>
+                <th scope="col">Symfony</th>
+                <th scope="col">Laravel</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Google reCaptcha Integration</td>
+                <td><a href="https://github.com/LilyBell/phptuts/tree/master/symfony/google_recaptcha"><i class="fab fa-github"></i></a></td>
+                <td><a href="https://github.com/LilyBell/phptuts/tree/master/laravel/google_recaptcha"><i class="fab fa-github"></i></a></td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
+</body>
+</html>
